@@ -3,20 +3,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t tywang/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t tywangcharlie/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true tywang/react-test npm test
+  - docker run -e CI=true tywangcharlie/react-test npm test
 
 after_success:
-  - docker build -t tywang/multi-client ./client
-  - docker build -t tywang/multi-nginx ./mginx
-  - docker build -t tywang/multi-server ./server
-  - docker build -t tywang/multi-worker ./worker
+  - docker build -t tywangcharlie/multi-client ./client
+  - docker build -t tywangcharlie/multi-nginx ./mginx
+  - docker build -t tywangcharlie/multi-server ./server
+  - docker build -t tywangcharlie/multi-worker ./worker
   # Login to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin 
   # Take those image and push them to docker hub
-  - docker push tywang/multi-client
-  - docker push tywang/multi-nginx
-  - docker push tywang/multi-server
-  - docker push tywang/multi-worker
+  - docker push tywangcharlie/multi-client
+  - docker push tywangcharlie/multi-nginx
+  - docker push tywangcharlie/multi-server
+  - docker push tywangcharlie/multi-worker
