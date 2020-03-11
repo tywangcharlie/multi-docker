@@ -10,7 +10,7 @@ script:
 
 after_success:
   - docker build -t tywangcharlie/multi-client ./client
-  - docker build -t tywangcharlie/multi-nginx ./mginx
+  - docker build -t tywangcharlie/multi-nginx ./nginx
   - docker build -t tywangcharlie/multi-server ./server
   - docker build -t tywangcharlie/multi-worker ./worker
   # Login to the docker CLI
